@@ -1,54 +1,29 @@
-{
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "vcs": {
-    "enabled": false,
-    "clientKind": "git",
-    "useIgnoreFile": false
-  },
-  "files": {
-    "ignoreUnknown": false,
-    "ignore": ["dist", ".next", "node_modules", "build", "src/generated/**"],
-    "include": ["src/**/*.ts", "src/**/*.tsx"]
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space"
-  },
-  "organizeImports": {
-    "enabled": true
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "correctness": {
-        "noUnusedVariables": "off"
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import { FlatCompat } from "@eslint/eslintrc";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+});
+
+const eslintConfig = [
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    languageOptions: {
+      parserOptions: {
+        warnOnUnsupportedTypeScriptVersion: false,
       },
-      "nursery": {
-        "noImgElement": "off"
-      },
-      "a11y": {
-        "noAutofocus": "off",
-        "noDistractingElements": "off",
-        "noHeaderScope": "off",
-        "noInteractiveElementToNoninteractiveRole": "off",
-        "noLabelWithoutControl": "off",
-        "noNoninteractiveElementToInteractiveRole": "off",
-        "noNoninteractiveTabindex": "off",
-        "noPositiveTabindex": "off",
-        "noRedundantAlt": "off",
-        "noRedundantRoles": "off",
-        "noSvgWithoutTitle": "off",
-        "useAltText": "off",
-        "useKeyWithClickEvents": "off",
-        "useKeyWithMouseEvents": "off",
-        "useButtonType": "off"
-      }
-    }
+    },
+    rules: {
+      "@typescript-eslint/no-unused-vars": "off",
+      "react/no-unescaped-entities": "off",
+      "@next/next/no-img-element": "off",
+      "jsx-a11y/alt-text": "off",
+    },
   },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "double"
-    }
-  }
-}
+];
+
+export default eslintConfig;

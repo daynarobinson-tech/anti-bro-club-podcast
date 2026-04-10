@@ -1,34 +1,54 @@
 {
-  "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "jsxImportSource": "same-runtime/dist",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "vcs": {
+    "enabled": false,
+    "clientKind": "git",
+    "useIgnoreFile": false
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": ["dist", ".next", "node_modules", "build", "src/generated/**"],
+    "include": ["src/**/*.ts", "src/**/*.tsx"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space"
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "off"
+      },
+      "nursery": {
+        "noImgElement": "off"
+      },
+      "a11y": {
+        "noAutofocus": "off",
+        "noDistractingElements": "off",
+        "noHeaderScope": "off",
+        "noInteractiveElementToNoninteractiveRole": "off",
+        "noLabelWithoutControl": "off",
+        "noNoninteractiveElementToInteractiveRole": "off",
+        "noNoninteractiveTabindex": "off",
+        "noPositiveTabindex": "off",
+        "noRedundantAlt": "off",
+        "noRedundantRoles": "off",
+        "noSvgWithoutTitle": "off",
+        "useAltText": "off",
+        "useKeyWithClickEvents": "off",
+        "useKeyWithMouseEvents": "off",
+        "useButtonType": "off"
       }
-    ],
-    "paths": {
-      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "next-env.d.ts",
-    "build/types/**/*.ts"
-  ],
-  "exclude": ["node_modules"]
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double"
+    }
+  }
 }
